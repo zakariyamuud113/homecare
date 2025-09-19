@@ -1,0 +1,176 @@
+/* Global Styles and Variables */
+    :root{
+      --ufh-bg: #ffffff;
+      --ufh-primary: #2A7FA5;   /* soft, trustworthy blue */
+      --ufh-primary-600: #216986;
+      --ufh-accent: #4CAF8A;    /* soft green accent */
+      --ufh-text: #1f2937;      /* near-black for contrast */
+      --ufh-muted: #6b7280;     /* slate for secondary text */
+      --ufh-surface: #f5f9fb;   /* pale blue surface */
+      --ufh-focus: #0ea5e9;     /* focus ring */
+      --ufh-star: #f59e0b;      /* amber for ratings */
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      color: var(--ufh-text);
+      background: var(--ufh-bg);
+      line-height: 1.6;
+    }
+    /* Skip to content */
+    .skip-link {
+      position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem; top: 1rem; width: auto; height: auto; padding: .5rem .75rem;
+      background: #000; color: #fff; z-index: 2000; border-radius: .375rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255,255,255,.9);
+      backdrop-filter: saturate(150%) blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .navbar-brand span.logo {
+      display: inline-flex; align-items: center; gap: .5rem; font-weight: 700;
+      color: var(--ufh-primary);
+    }
+    .nav-link { font-weight: 600; }
+    .nav-link:focus-visible { outline: 3px solid var(--ufh-focus); outline-offset: 2px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(42,127,165,.10), rgba(76,175,138,.10)), #eaf5f9;
+      overflow: clip;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url('assets/hero-caregivers.jpg') center/cover no-repeat;
+      opacity: .28; /* keep text contrast strong */
+    }
+    .hero-content {
+      position: relative;
+      max-width: 980px;
+      padding: 4rem 1.25rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 3.2vw + 1rem, 3rem);
+      font-weight: 800;
+      color: var(--ufh-primary-600);
+      letter-spacing: .2px;
+    }
+    .hero p.lead {
+      font-size: clamp(1rem, .6vw + .9rem, 1.25rem);
+      color: var(--ufh-text);
+      margin: 1rem auto 2rem;
+      max-width: 60ch;
+    }
+    .btn-cta {
+      background: var(--ufh-primary); color: #fff; border: none;
+      padding: .9rem 1.2rem; border-radius: 999px; font-weight: 700;
+      box-shadow: 0 6px 18px rgba(42,127,165,.25);
+    }
+    .btn-cta:hover, .btn-cta:focus { background: var(--ufh-primary-600); color: #fff; }
+    .btn-ghost {
+      border-radius: 999px; font-weight: 700; padding: .9rem 1.2rem;
+      border: 2px solid var(--ufh-primary); color: var(--ufh-primary);
+      background: #fff;
+    }
+    .btn-ghost:hover, .btn-ghost:focus { background: var(--ufh-surface); }
+
+    /* Sections */
+    section { padding: 64px 0; }
+    .section-light { background: var(--ufh-surface); }
+    .section-title {
+      font-weight: 800; letter-spacing: .2px; color: var(--ufh-primary-600);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle { color: var(--ufh-muted); max-width: 70ch; }
+
+    /* About list */
+    .about-list .icon-wrap {
+      width: 44px; height: 44px; border-radius: 999px;
+      display: inline-grid; place-items: center;
+      background: #e6f4f1; color: var(--ufh-accent);
+      margin-right: .75rem;
+      flex: 0 0 auto;
+    }
+
+    /* Cards */
+    .service-card, .profile-card, .testimonial-card {
+      border: 1px solid #e5e7eb; border-radius: var(--radius); background: #fff;
+    }
+    .service-card:hover, .profile-card:hover, .testimonial-card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,.06);
+      transform: translateY(-2px);
+      transition: all .25s ease;
+    }
+
+    .icon-lg { width: 36px; height: 36px; color: var(--ufh-primary-600); }
+
+    /* Testimonials */
+    .stars { color: var(--ufh-star); }
+
+    /* Form */
+    .form-control, .form-select { padding: .75rem; border-radius: .75rem; }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--ufh-focus); box-shadow: 0 0 0 .25rem rgba(14,165,233,.25);
+    }
+    .validation-msg { font-size: .95rem; }
+
+    /* Footer */
+    footer {
+      background: #0f172a; color: #e5e7eb;
+    }
+    footer a { color: #c0e5f4; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto; }
+    }
+
+    /* Mobile-first adjustments */
+    @media (max-width: 576px) {
+    /* Reduce hero padding so content fits without scrolling */
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+
+    /* Slightly smaller hero headline */
+    .hero h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+    }
+
+    /* Reduce lead text size */
+    .hero p.lead {
+        font-size: 1rem;
+    }
+
+    /* Stack buttons vertically with spacing */
+    .hero .d-flex {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Services & profiles: center text and icons */
+    .service-card, .profile-card {
+        text-align: center;
+    }
+
+    /* Testimonials: smaller padding for cards */
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    }
