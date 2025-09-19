@@ -297,76 +297,77 @@
 
     <!-- Appointment Booking -->
     <section id="appointment">
-      <div class="container">
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-6">
-            <h2 class="section-title h1">Book an appointment</h2>
-            <p class="section-subtitle">Tell us a bit about your needs. We’ll follow up promptly to confirm details and schedule your visit.</p>
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="section-title h1">Book an appointment</h2>
+        <p class="section-subtitle">Tell us a bit about your needs. We’ll follow up promptly to confirm details and schedule your visit.</p>
 
-            <!-- Netlify-ready form -->
-            <form id="bookingForm" name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-3 needs-validation" novalidate>
-              <!-- Hidden input for Netlify -->
-              <input type="hidden" name="form-name" value="appointment">
-              <!-- Honeypot field -->
-              <p class="d-none">
-                <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-              </p>
+        <!-- Netlify-ready form -->
+        <form id="bookingForm" name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-3 needs-validation" novalidate>
+          <!-- Hidden input for Netlify -->
+          <input type="hidden" name="form-name" value="appointment">
+          <!-- Honeypot field -->
+          <p class="d-none">
+            <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+          </p>
 
-              <div class="mb-3">
-                <label for="name" class="form-label">Full name</label>
-                <input id="name" name="name" type="text" class="form-control" required autocomplete="name" placeholder="Jane Doe">
-                <div class="invalid-feedback">Please enter your full name.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
-                <input id="phone" name="phone" type="tel" class="form-control" required
-                      inputmode="tel" autocomplete="tel"
-                      pattern="^[0-9+(). -]{7,}$" placeholder="(555) 123-4567">
-                <div class="invalid-feedback">Please enter a valid phone number.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="email" class="form-control" required autocomplete="email" placeholder="you@example.com">
-                <div class="invalid-feedback">Please enter a valid email address.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="datetime" class="form-label">Preferred date and time</label>
-                <input id="datetime" name="datetime" type="datetime-local" class="form-control" required>
-                <div class="invalid-feedback">Please select a preferred date and time.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="serviceType" class="form-label">Type of service needed</label>
-                <select id="serviceType" name="serviceType" class="form-select" required>
-                  <option value="" selected disabled>Choose a service</option>
-                  <option>Companionship Care</option>
-                  <option>Personal Care Assistance</option>
-                  <option>Skilled Nursing</option>
-                  <option>Meal Preparation</option>
-                  <option>Transportation Assistance</option>
-                </select>
-                <div class="invalid-feedback">Please select a service type.</div>
-              </div>
-
-              <button type="submit" class="btn btn-cta">Submit request</button>
-
-              <!-- Success / error message -->
-              <div id="formStatus" class="mt-3" role="status" aria-live="polite"></div>
-            </form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full name</label>
+            <input id="name" name="name" type="text" class="form-control" required autocomplete="name" placeholder="Jane Doe">
+            <div class="invalid-feedback">Please enter your full name.</div>
           </div>
 
-          <div class="col-lg-6">
-            <img class="img-fluid rounded-4 shadow-sm"
-                src="assets/appointment.jpg"
-                alt="Care coordinator speaking with a family by phone"
-                loading="lazy" width="900" height="600">
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input id="phone" name="phone" type="tel" class="form-control" required
+                   inputmode="tel" autocomplete="tel"
+                   pattern="^[0-9+(). -]{7,}$" placeholder="(555) 123-4567">
+            <div class="invalid-feedback">Please enter a valid phone number.</div>
           </div>
-        </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="email" class="form-control" required autocomplete="email" placeholder="you@example.com">
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="datetime" class="form-label">Preferred date and time</label>
+            <input id="datetime" name="datetime" type="datetime-local" class="form-control" required>
+            <div class="invalid-feedback">Please select a preferred date and time.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="serviceType" class="form-label">Type of service needed</label>
+            <select id="serviceType" name="serviceType" class="form-select" required>
+              <option value="" selected disabled>Choose a service</option>
+              <option>Companionship Care</option>
+              <option>Personal Care Assistance</option>
+              <option>Skilled Nursing</option>
+              <option>Meal Preparation</option>
+              <option>Transportation Assistance</option>
+            </select>
+            <div class="invalid-feedback">Please select a service type.</div>
+          </div>
+
+          <button type="submit" class="btn btn-cta">Submit request</button>
+
+          <!-- Success / error message -->
+          <div id="formStatus" class="mt-3" role="status" aria-live="polite"></div>
+        </form>
       </div>
-    </section>
+
+      <div class="col-lg-6">
+        <img class="img-fluid rounded-4 shadow-sm"
+             src="assets/appointment.jpg"
+             alt="Care coordinator speaking with a family by phone"
+             loading="lazy" width="900" height="600">
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
     <!-- FAQ -->
@@ -537,7 +538,8 @@
       setActive();
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
+// Enhanced form submission to Netlify
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('bookingForm');
   const status = document.getElementById('formStatus');
 
@@ -576,6 +578,7 @@
     });
   });
 });
+
   </script>
 </body>
 </html>
