@@ -1,6 +1,6 @@
-<!-- Structured data: LocalBusiness -->
+// <!-- Structured data: LocalBusiness -->
   
-  {
+    const structuredData = {
     "@context":"https://schema.org",
     "@type":"LocalBusiness",
     "name":"Unity Family Home LLC",
@@ -42,19 +42,28 @@
 
     const formData = new FormData(form);
 
+    // Ensure form-name is included
+    if (!formData.has('form-name')) {
+      formData.append('form-name', form.getAttribute('name'));
+    }
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => {
-      status.innerHTML = '<div class="alert alert-success">✅ Thank you! Your request has been received. We will contact you shortly.</div>';
-      form.reset();
-      form.classList.remove('was-validated');
+    .then((response) => {
+      if (response.ok) {
+        status.innerHTML = '<div class="alert alert-success">✅ Thank you! Your request has been received. We will contact you shortly.</div>';
+        form.reset();
+        form.classList.remove('was-validated');
+      } else {
+        throw new Error(`Netlify returned ${response.status}`);
+      }
     })
     .catch((error) => {
       status.innerHTML = '<div class="alert alert-danger">❌ Oops! There was a problem submitting your form.</div>';
-      console.error(error);
+      console.error('Form submission error:', error);
     });
   });
 });
