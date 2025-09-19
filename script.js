@@ -29,35 +29,33 @@
  
 
     document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('bookingForm');
-    const status = document.getElementById('formStatus');
+  const form = document.getElementById('bookingForm');
+  const status = document.getElementById('formStatus');
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); // stop normal form submit
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-        // Validate with HTML5 first
-        if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        return;
-        }
+    if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      return;
+    }
 
-        // Prepare form data
-        const formData = new FormData(form);
+    const formData = new FormData(form);
 
-        // Send to Netlify via fetch
-        fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-        })
-        .then(() => {
-        status.textContent = '✅ Thank you! Your request has been received. We will contact you shortly.';
-        form.reset();
-        form.classList.remove('was-validated');
-        })
-        .catch((error) => {
-        status.textContent = '❌ Oops! There was a problem submitting your form.';
-        console.error(error);
-        });
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      status.innerHTML = '<div class="alert alert-success">✅ Thank you! Your request has been received. We will contact you shortly.</div>';
+      form.reset();
+      form.classList.remove('was-validated');
+    })
+    .catch((error) => {
+      status.innerHTML = '<div class="alert alert-danger">❌ Oops! There was a problem submitting your form.</div>';
+      console.error(error);
     });
-    });
+  });
+});
+

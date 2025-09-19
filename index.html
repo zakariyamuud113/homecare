@@ -296,6 +296,7 @@
     </section>
 
     <!-- Appointment Booking -->
+    <!-- Appointment Booking -->
     <section id="appointment">
       <div class="container">
         <div class="row g-4 align-items-center">
@@ -304,7 +305,7 @@
             <p class="section-subtitle">Tell us a bit about your needs. We’ll follow up promptly to confirm details and schedule your visit.</p>
 
             <!-- Netlify-ready form -->
-            <form name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-3 needs-validation" id="bookingForm" novalidate>
+            <form id="bookingForm" name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-3 needs-validation" novalidate>
               <!-- Hidden input for Netlify -->
               <input type="hidden" name="form-name" value="appointment">
               <!-- Honeypot field -->
@@ -352,7 +353,9 @@
               </div>
 
               <button type="submit" class="btn btn-cta">Submit request</button>
-              <div id="formStatus" class="mt-3 text-success" role="status" aria-live="polite"></div>
+
+              <!-- Success / error message -->
+              <div id="formStatus" class="mt-3" role="status" aria-live="polite"></div>
             </form>
           </div>
 
@@ -365,6 +368,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- FAQ -->
     <section id="faq" class="section-light">
